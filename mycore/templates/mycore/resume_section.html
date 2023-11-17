@@ -4,21 +4,22 @@
 
 <div id="accordion">
     {% for entry in section.resumeentry_set.all %}
-        <div class="card">
+    <div class="card">
         <div class="card-header" id="heading{{entry.id}}">
             <h5 class="mb-0">
-            <button class="btn btn-link text-size-medium" data-toggle="collapse" data-target="#collapse{{entry.id}}" aria-expanded="true" aria-controls="collapse{{entry.id}}">
-                {{entry.position}} @ {{entry.workplace}}
-            </button>
+                <button class="btn btn-link text-size-medium align-left" data-toggle="collapse"
+                    data-target="#collapse{{entry.id}}" aria-expanded="true" aria-controls="collapse{{entry.id}}">
+                    {{entry.position}} @ {{entry.workplace}}
+                </button>
             </h5>
         </div>
         <div id="collapse{{entry.id}}" class="collapse" aria-labelledby="heading{{entry.id}}" data-parent="#accordion">
-            <div class="card-body">
+            <div class="card-body align-left">
                 {{ entry.start_date }} - {{entry.end_date}} <br>
-                {{ entry.description }} <br>
+                {{ entry.description|markdown_to_html|safe }} <br>
                 <a href={{entry.link}}> Link </a> <br>
             </div>
         </div>
-        </div>
+    </div>
     {% endfor %}
 </div>
