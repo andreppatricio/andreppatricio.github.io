@@ -2,7 +2,7 @@
 
 
 <p>{{ section.text|markdown_to_html|safe }}</p>
-
+<br>
 <div id="accordion">
     {% for entry in section.resumeentry_set.all %}
     <div class="card">

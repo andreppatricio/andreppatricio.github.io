@@ -1,7 +1,7 @@
 {% load custom_tags %}
 
 <p>{{ section.text|markdown_to_html|safe }}</p>
-
+<br>
 <div class="container text-center">
     <ul class="list-group">
         {% for publication in section.publication_set.all %}

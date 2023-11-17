@@ -1,7 +1,7 @@
 {% load custom_tags %}
 
 <p>{{ section.text|markdown_to_html|safe }}</p>
-
+<br>
 <div id="accordion">
     {% for entry in section.projectentry_set.all %}
     <div class="card">
