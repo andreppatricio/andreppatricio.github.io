@@ -20,7 +20,7 @@
                 {{ entry.description|markdown_to_html|safe }}
                 <br>
                 {% if entry.link %}
-                    <a href="{{ entry.link }}"> Link </a> <br>
+                    <a href="{{ entry.link }}" target="_blank"> {{entry.link_text}} </a> <br>
                 {% endif %}
             </div>
         </div>

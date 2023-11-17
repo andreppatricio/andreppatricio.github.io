@@ -56,12 +56,14 @@
     {% endfor %}
 
 
-    <div class="container buttons-list">
-        {% for sbutton in sitebuttons %}
-        <li>
-            <input class="small-image" type="image" src={{sbutton.icon.url}} alt="{{sbutton.text}}" onclick="openURLInNewTab('{{sbutton.url}}')"> <br>
-        </li>
-        {% endfor %}
+    <div class="container">
+        <ul class="buttons-list">
+            {% for sbutton in sitebuttons %}
+                <li>
+                    <input class="small-image" type="image" src={{sbutton.icon.url}} alt="{{sbutton.text}}" onclick="openURLInNewTab('{{sbutton.url}}')"> <br>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 
 
