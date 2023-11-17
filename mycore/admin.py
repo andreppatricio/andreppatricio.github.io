@@ -1,6 +1,8 @@
 from django.contrib import admin
 
-from .models import TextSection, ResumeSection, ResumeEntry, ContactSection, PublicationsSection, Publication, Title, SiteButton
+from .models import (ContactSection, ProjectEntry, ProjectSection, Publication,
+                     PublicationsSection, ResumeEntry, ResumeSection,
+                     SiteButton, TextSection, Title)
 
 
 class TextSectionAdmin(admin.ModelAdmin):
@@ -12,6 +14,13 @@ class ResumeEntryInline(admin.StackedInline):
 class ResumeSectionAdmin(admin.ModelAdmin):
     list_display = ('number', 'short_title', 'title', 'text')
     inlines = [ResumeEntryInline]
+
+class ProjectEntryInline(admin.StackedInline):
+    model = ProjectEntry
+
+class ProjectSectionAdmin(admin.ModelAdmin):
+    list_display = ('number', 'short_title', 'title', 'text')
+    inlines = [ProjectEntryInline]
 
 class ContactSectionAdmin(admin.ModelAdmin):
     list_display = ('number', 'short_title', 'title', 'text', 'email')
@@ -32,12 +41,14 @@ class SiteButtonAdmin(admin.ModelAdmin):
 
 admin.site.register(TextSection, TextSectionAdmin)
 admin.site.register(ResumeSection, ResumeSectionAdmin)
+admin.site.register(ProjectSection, ProjectSectionAdmin)
 admin.site.register(ContactSection, ContactSectionAdmin)
 admin.site.register(PublicationsSection, PublicationSectionAdmin)
 admin.site.register(Title, TitleAdmin)
 admin.site.register(SiteButton, SiteButtonAdmin)
 
 from .models import SiteSettings
+
 
 def toggle_push_static(modeladmin, request, queryset):
     # Assuming a single instance of SiteSettings

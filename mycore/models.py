@@ -35,6 +35,17 @@ class ResumeEntry(models.Model):
     link = models.CharField(max_length=200)
 
 
+class ProjectSection(Section):
+    """Resume Section with text (inhereted from Section) and ResumeEntries"""
+
+
+class ProjectEntry(models.Model):
+    section = models.ForeignKey(ProjectSection, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    description = models.TextField(max_length=1000, blank=True)
+    link = models.CharField(max_length=200)
+
+
 class ContactSection(Section):
     email = models.EmailField()
 

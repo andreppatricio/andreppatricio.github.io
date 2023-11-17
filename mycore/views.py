@@ -2,14 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import generic
 
-from .models import (
-    ContactSection,
-    PublicationsSection,
-    ResumeSection,
-    SiteButton,
-    TextSection,
-    Title,
-)
+from .models import (ContactSection, ProjectSection, PublicationsSection,
+                     ResumeSection, SiteButton, TextSection, Title)
 
 
 def get_index_context():
@@ -17,10 +11,11 @@ def get_index_context():
     # Get all types of sections
     text_sections = list(TextSection.objects.all())
     resume_sections = list(ResumeSection.objects.all())
+    project_sections = list(ProjectSection.objects.all())
     contact_sections = list(ContactSection.objects.all())
     publications_sections = list(PublicationsSection.objects.all())
     sections = (
-        text_sections + resume_sections + contact_sections + publications_sections
+        text_sections + resume_sections + project_sections + contact_sections + publications_sections
     )
     sections = sorted(sections, key=lambda x: x.number, reverse=False)
     context["section_list"] = sections

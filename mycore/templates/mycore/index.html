@@ -42,6 +42,8 @@
                     {% render_text_section section %}
                 {% elif section|is_instance:"ResumeSection" %}
                     {% render_resume_section section %}
+                {% elif section|is_instance:"ProjectSection" %}
+                    {% render_project_section section %}
                 {% elif section|is_instance:"PublicationsSection" %}
                     {% render_publications_section section %}
                 {% elif section|is_instance:"ContactSection" %}

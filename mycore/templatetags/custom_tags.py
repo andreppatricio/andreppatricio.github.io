@@ -1,6 +1,6 @@
 # custom_tags.py
-from django import template
 import markdown2
+from django import template
 
 register = template.Library()
 
@@ -22,6 +22,9 @@ def render_text_section(section):
 def render_resume_section(section):
     return {'section': section}
 
+@register.inclusion_tag('mycore/project_section.html')
+def render_project_section(section):
+    return {'section': section}
 
 @register.inclusion_tag('mycore/contact_section.html')
 def render_contact_section(section):
