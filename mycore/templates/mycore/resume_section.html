@@ -15,7 +15,8 @@
         </div>
         <div id="collapse{{entry.id}}" class="collapse" aria-labelledby="heading{{entry.id}}" data-parent="#accordion">
             <div class="card-body align-left">
-                {{ entry.start_date }} - {{entry.end_date}} <br>
+                {{ entry.start_date|date:"F Y" }} - {% if entry.end_date %}{{ entry.end_date|date:"F Y" }}{%else%}Current{% endif %} <br>
+                {{ entry.description|markdown_to_html|safe }} <br>
                 {{ entry.description|markdown_to_html|safe }} <br>
                 <a href={{entry.link}}> Link </a> <br>
             </div>
