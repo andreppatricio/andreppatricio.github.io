@@ -45,6 +45,7 @@ class ProjectEntry(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=1000, blank=True)
     link = models.CharField(max_length=200)
+    link_text = models.CharField(max_length=200)
 
 
 class ContactSection(Section):

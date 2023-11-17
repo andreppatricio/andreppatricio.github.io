@@ -5,18 +5,18 @@
 <div id="accordion">
     {% for entry in section.projectentry_set.all %}
     <div class="card">
-        <div class="card-header" id="heading{{entry.id}}">
+        <div class="card-header" id="heading_project{{entry.id}}">
             <h5 class="mb-0">
                 <button class="btn btn-link text-size-medium align-left" data-toggle="collapse"
-                    data-target="#collapse{{entry.id}}" aria-expanded="true" aria-controls="collapse{{entry.id}}">
+                    data-target="#collapse_project{{entry.id}}" aria-expanded="true" aria-controls="collapse{{entry.id}}">
                     {{entry.title}}
                 </button>
             </h5>
         </div>
-        <div id="collapse{{entry.id}}" class="collapse" aria-labelledby="heading{{entry.id}}" data-parent="#accordion">
+        <div id="collapse_project{{entry.id}}" class="collapse" aria-labelledby="heading_project{{entry.id}}" data-parent="#accordion">
             <div class="card-body align-left">
                 {{ entry.description|markdown_to_html|safe }} <br>
-                <a href={{entry.link}}> Link </a> <br>
+                <a href="{{ entry.link }}" target="_blank"> {{entry.link_text}} </a> <br>
             </div>
         </div>
     </div>
