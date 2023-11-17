@@ -1,0 +1,75 @@
+{% load static %}
+{% load custom_tags %}
+
+<head>
+    <title>André Patrício</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'mycore/theme.css' %}">
+    <link rel="stylesheet" href="{% static 'mycore/style.css' %}">
+</head>
+
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand">My Website</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                {% for section in section_list %}
+                    <li class="nav-item">
+                        <a class="nav-link scroll-link" href="#" data-target="{{section.short_title}}"> {{ section.numbered_short_title }} </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="fullscreen-container">
+        <div class="centered-text">
+            <h1 class="h1-big">{{ title.main_text }}</h1>
+            <p class="p-big">{{ title.secondary_text }}</p>
+        </div>
+    </div>
+
+    {% for section in section_list %}
+        <div data-id="{{section.short_title}}" class="fullscreen-container">
+            <div class="{% cycle 'align-left' 'align-right' %} hard-width text-size-small p-medium-section">
+                <h1>{{ section.numbered_title }}</h1> <br>
+                {% if section|is_instance:"TextSection" %}
+                    {% render_text_section section %}
+                {% elif section|is_instance:"ResumeSection" %}
+                    {% render_resume_section section %}
+                {% elif section|is_instance:"PublicationsSection" %}
+                    {% render_publications_section section %}
+                {% elif section|is_instance:"ContactSection" %}
+                    {% render_contact_section section %}
+                {% else %}
+                    <p>"Else Section"</p>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+
+
+    <div class="container buttons-list">
+        {% for sbutton in sitebuttons %}
+        <li>
+            <input class="small-image" type="image" src={{sbutton.icon.url}} alt="{{sbutton.text}}" onclick="openURLInNewTab('{{sbutton.url}}')"> <br>
+        </li>
+        {% endfor %}
+    </div>
+
+
+    <!-- "Back to the Top" button -->
+    <button onclick="topFunction()" id="back-to-top" type="button" class="btn btn-light">Back to Top</button>
+
+    <!-- Include Bootstrap JS (jQuery and Popper.js required) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'mycore/script.js' %}"></script>
+
+</body>

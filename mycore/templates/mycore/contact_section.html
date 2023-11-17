@@ -1,0 +1,4 @@
+{% load custom_tags %}
+
+<p>{{ section.text|markdown_to_html|safe }}</p>
+<p>Email: {{ section.email }}</p>
