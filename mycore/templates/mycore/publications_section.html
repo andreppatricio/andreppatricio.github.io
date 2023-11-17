@@ -6,7 +6,7 @@
     <ul class="list-group">
         {% for publication in section.publication_set.all %}
             <li class="list-group-item">
-                {{ publication.title }} <br>
+                <b>{{ publication.title }}</b> <br>
                 {{ publication.journal }} - <a href={{publication.doi}}> DOI </a>  <br>
             </li>
         {% endfor %}

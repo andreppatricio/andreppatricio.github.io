@@ -32,7 +32,7 @@ class ResumeEntry(models.Model):
     start_date = models.DateField()
     end_date = models.DateField(null=True, blank=True, default=None)
     description = models.TextField(max_length=1000, blank=True)
-    link = models.CharField(max_length=200)
+    link = models.CharField(max_length=200, null=True, blank=True, default=None)
 
 
 class ProjectSection(Section):

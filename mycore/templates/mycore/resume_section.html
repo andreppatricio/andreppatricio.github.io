@@ -1,5 +1,6 @@
 {% load custom_tags %}
 
+
 <p>{{ section.text|markdown_to_html|safe }}</p>
 
 <div id="accordion">
@@ -15,9 +16,12 @@
         </div>
         <div id="collapse{{entry.id}}" class="collapse" aria-labelledby="heading{{entry.id}}" data-parent="#accordion">
             <div class="card-body align-left">
-                {{ entry.start_date|date:"F Y" }} - {% if entry.end_date %}{{ entry.end_date|date:"F Y" }}{%else%}Current{% endif %} <br>
-                {{ entry.description|markdown_to_html|safe }} <br>
-                <a href={{entry.link}}> Link </a> <br>
+                {{ entry.start_date|date:"F Y" }} - {% if entry.end_date %}{{ entry.end_date|date:"F Y" }}{%else%}Current{% endif %} <br><br>
+                {{ entry.description|markdown_to_html|safe }}
+                <br>
+                {% if entry.link %}
+                    <a href="{{ entry.link }}"> Link </a> <br>
+                {% endif %}
             </div>
         </div>
     </div>

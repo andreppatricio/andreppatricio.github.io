@@ -10,6 +10,7 @@ class TextSectionAdmin(admin.ModelAdmin):
 
 class ResumeEntryInline(admin.StackedInline):
     model = ResumeEntry
+    extra = 1
 
 class ResumeSectionAdmin(admin.ModelAdmin):
     list_display = ('number', 'short_title', 'title', 'text')
@@ -17,6 +18,7 @@ class ResumeSectionAdmin(admin.ModelAdmin):
 
 class ProjectEntryInline(admin.StackedInline):
     model = ProjectEntry
+    extra = 1
 
 class ProjectSectionAdmin(admin.ModelAdmin):
     list_display = ('number', 'short_title', 'title', 'text')
@@ -27,6 +29,7 @@ class ContactSectionAdmin(admin.ModelAdmin):
 
 class PublicationInline(admin.StackedInline):
     model = Publication
+    extra = 1
 
 class PublicationSectionAdmin(admin.ModelAdmin):
     list_display = ('number', 'short_title', 'title', 'text')
