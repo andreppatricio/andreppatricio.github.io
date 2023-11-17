@@ -35,7 +35,7 @@ def main(rendered_template, instance):
             ["git", "commit", "-m", commit_msg], check=True, text=True
         )
         # push
-        result = subprocess.run(["git", "push"], check=True, text=True)
+        result = subprocess.run(["git", "push", "origin", "main"], check=True, text=True)
         print("Git push successful!")
     except subprocess.CalledProcessError as e:
         print(f"Git push failed: {e}")
