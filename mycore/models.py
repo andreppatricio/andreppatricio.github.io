@@ -61,7 +61,7 @@ class Publication(models.Model):
     title = models.CharField(max_length=200)
     authors = models.CharField(max_length=100)
     journal = models.CharField(max_length=100)
-    doi = models.CharField(max_length=50)
+    doi = models.CharField(max_length=50, null=True, blank=True, default=None)
 
 
 class Title(models.Model):
